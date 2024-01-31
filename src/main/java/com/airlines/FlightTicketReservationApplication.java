@@ -1,4 +1,4 @@
-package com.project.Flight_Ticket_Reservation;
+package com.airlines;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

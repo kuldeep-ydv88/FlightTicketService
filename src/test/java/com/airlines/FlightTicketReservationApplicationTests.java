@@ -1,4 +1,4 @@
-package com.project.Flight_Ticket_Reservation;
+package com.airlines;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
