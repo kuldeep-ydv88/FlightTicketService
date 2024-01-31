@@ -1,4 +1,4 @@
-package com.airlines.login.loginDto;
+package com.airlines.login.dto;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.Data;
