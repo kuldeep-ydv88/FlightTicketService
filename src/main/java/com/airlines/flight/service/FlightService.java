@@ -8,7 +8,6 @@ public class FlightService {
 
     }
     public void deleteFlight(){
-
     }
     public void getFlightId(){
 
