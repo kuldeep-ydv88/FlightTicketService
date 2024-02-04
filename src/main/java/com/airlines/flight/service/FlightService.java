@@ -1,15 +1,33 @@
 package com.airlines.flight.service;
 
+import com.airlines.login.dto.APIResponseDTO;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+
+@Slf4j
+@Service
 public class FlightService {
-    public void addFlight(){
+    /**
+     * This is service class for flight management
+     * it returns response to the controller
+     *
+     * @return
+     */
+    public APIResponseDTO addFlight() {
+        return null;
 
     }
-    public void updateFlight(){
 
+    public APIResponseDTO updateFlight() {
+        return null;
     }
-    public void deleteFlight(){
+
+    public APIResponseDTO deleteFlight() {
+        return null;
     }
-    public void getFlightId(){
+
+    public APIResponseDTO getFlightId() {
+        return null;
 
     }
 
