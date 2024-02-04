@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("flights/")
+@RequestMapping("/flights")
 @Tag(name = "flight", description = "flight controller APIs")
 @Slf4j
 public class FlightController {
