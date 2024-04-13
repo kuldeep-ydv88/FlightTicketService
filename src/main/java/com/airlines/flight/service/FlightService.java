@@ -22,7 +22,7 @@ public class FlightService {
         return null;
     }
 
-    public APIResponseDTO deleteFlight() {
+    public APIResponseDTO cancelFlight() {
         return null;
     }
 

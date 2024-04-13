@@ -2,6 +2,7 @@ package com.airlines.flight.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
 
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
@@ -9,7 +10,8 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class AddFlightDTO {
-
+    @Id
+    private Long id;
     private String flightNumber;
     private String departureAirport;
     private String arrivalAirport;

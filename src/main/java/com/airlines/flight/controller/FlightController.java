@@ -1,6 +1,7 @@
 package com.airlines.flight.controller;
 
 
+import com.airlines.flight.dto.AddFlightDTO;
 import com.airlines.flight.dto.SearchFlightDTO;
 import com.airlines.flight.repository.FlightRepository;
 import com.airlines.flight.service.FlightService;
@@ -27,8 +28,10 @@ public class FlightController {
     @Autowired
     private FlightRepository repository;
 
+
     @PostMapping("/add")
-    public APIResponseDTO addFlight() {
+    public APIResponseDTO addFlight(@RequestBody AddFlightDTO addFlightDTO) {
+
         return null;
     }
 
@@ -49,5 +52,7 @@ public class FlightController {
         log.info("Request ");
         return null;
     }
+
+
 
 }
