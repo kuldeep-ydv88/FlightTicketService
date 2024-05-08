@@ -26,6 +26,8 @@ public class RegisterRequestDTO {
     @NotBlank(message = MessageKeyConstant.MANDATORY_PARAM_MISSING)
     private String contactNumber;
     @NotBlank(message = MessageKeyConstant.MANDATORY_PARAM_MISSING)
+    private String age;
+    @NotBlank(message = MessageKeyConstant.MANDATORY_PARAM_MISSING)
     private String nationality;
     @NotBlank(message = MessageKeyConstant.MANDATORY_PARAM_MISSING)
     private String address;
