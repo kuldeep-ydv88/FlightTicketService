@@ -31,6 +31,7 @@ public class RegisterRequestDTO {
     private String nationality;
     @NotBlank(message = MessageKeyConstant.MANDATORY_PARAM_MISSING)
     private String address;
+    private String role;
 
 
 }

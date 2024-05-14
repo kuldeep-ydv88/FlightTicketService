@@ -5,10 +5,12 @@ import lombok.experimental.Accessors;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 
 @Data
@@ -19,7 +21,7 @@ public class User  implements UserDetails {
     private static final long serialVersionUID = 7954325925563724664L;
 
     @Id
-    private Long id;
+    private String id;
     private String userName;
     private String firstName;
     private String lastName;
@@ -30,10 +32,11 @@ public class User  implements UserDetails {
     private String age;
     private String nationality;
     private String address;
+    private String role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return List.of(new SimpleGrantedAuthority(role));
     }
 
     @Override
@@ -48,17 +51,17 @@ public class User  implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
