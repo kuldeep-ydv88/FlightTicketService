@@ -18,7 +18,5 @@ public class Flight {
     private String flightNumber;
     private String departureCity;
     private String arrivalCity;
-    private Date departureTime;
-    private Date arrivalTime;
     private String price;
 }
