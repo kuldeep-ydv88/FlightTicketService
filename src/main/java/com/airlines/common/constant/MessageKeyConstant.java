@@ -2,8 +2,8 @@ package com.airlines.common.constant;
 
 /**
  * Message Key constant files for accessing message from properties
- * @author Kuldeep
  *
+ * @author Kuldeep
  */
 public class MessageKeyConstant {
     public static final String DATA_NOT_FOUND = "data.not.found";

@@ -22,6 +22,7 @@ public class LoginController {
 
     /**
      * This is the Login API.
+     *
      * @param loginRequestDTO
      * @return
      */
@@ -34,6 +35,7 @@ public class LoginController {
 
     /**
      * This is the Register API for users.
+     *
      * @param registerRequestDTO
      * @return
      */
@@ -46,6 +48,7 @@ public class LoginController {
 
     /**
      * This is change password or reset password API.
+     *
      * @param changePasswordRequestDTO
      * @param email
      * @return
@@ -61,16 +64,18 @@ public class LoginController {
 
     /**
      * This is logout API for users. this will remove jwt token.
+     *
      * @return
      */
-    @Operation(summary = "forget password",description = "request contain user i'd")
+    @Operation(summary = "forget password", description = "request contain user i'd")
     @PostMapping("/logout")
-    public APIResponseDTO logout(){
+    public APIResponseDTO logout() {
         return null;
     }
+
     @Operation(summary = "Refresh access token API", description = "Refresh the user access token")
     @GetMapping("/refreshment")
-    public RefreshTokenResponseDTO refreshToken (RefreshTokenResponseDTO request){
+    public RefreshTokenResponseDTO refreshToken(RefreshTokenResponseDTO request) {
         return null;
     }
 

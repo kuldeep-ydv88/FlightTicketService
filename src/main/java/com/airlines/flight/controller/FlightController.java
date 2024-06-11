@@ -29,6 +29,7 @@ public class FlightController {
     /**
      * This API will help me to schedule a flight for booking. with
      * there information
+     *
      * @param addFlightDTO
      * @return
      */
@@ -39,6 +40,7 @@ public class FlightController {
 
     /**
      * This API will help me to get information by passing the id.
+     *
      * @param searchFlightDTO
      * @return
      */
@@ -49,6 +51,7 @@ public class FlightController {
 
     /**
      * This API will help me to update the flight information.
+     *
      * @return
      */
     @PutMapping("/updateInfo")
@@ -60,11 +63,12 @@ public class FlightController {
     /**
      * This API will delete the schedule flight.
      * this is soft-delete.
+     *
      * @param id
      * @return
      */
     @DeleteMapping("/{id}")
-    @Operation(summary = "Delete Schedule flight ",description = " Request contains flight ID ")
+    @Operation(summary = "Delete Schedule flight ", description = " Request contains flight ID ")
     public ResponseEntity<Void> deleteFlight(@Valid @PathVariable String id) {
         log.info("Request ");
         return null;

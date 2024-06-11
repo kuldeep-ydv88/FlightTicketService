@@ -16,7 +16,7 @@ import java.util.List;
 @Data
 @Document("users")
 @Accessors(chain = true)
-public class User  implements UserDetails {
+public class User implements UserDetails {
 
     private static final long serialVersionUID = 7954325925563724664L;
 

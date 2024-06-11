@@ -57,20 +57,20 @@ public class LoginService {
     public AuthResponse registerUser(RegisterRequestDTO registerRequestDTO) {
         AuthResponse resp = new AuthResponse();
 
-            User user = new User();
-            user.setUserName(registerRequestDTO.getUserName());
-            user.setFirstName(registerRequestDTO.getFirstName());
-            user.setLastName(registerRequestDTO.getLastName());
-            user.setEmail(registerRequestDTO.getEmail());
-            user.setDateOfBirth(registerRequestDTO.getDateOfBirth());
-            user.setContactNumber(registerRequestDTO.getContactNumber());
-            user.setAddress(registerRequestDTO.getAddress());
-            user.setAge(registerRequestDTO.getAge());
-            user.setPassword(registerRequestDTO.getPassword());
-            user.setNationality(registerRequestDTO.getNationality());
-            user.setRole(String.valueOf(RoleEnum.USER));
-            User userData = userRepository.save(user);
-            return resp;
+        User user = new User();
+        user.setUserName(registerRequestDTO.getUserName());
+        user.setFirstName(registerRequestDTO.getFirstName());
+        user.setLastName(registerRequestDTO.getLastName());
+        user.setEmail(registerRequestDTO.getEmail());
+        user.setDateOfBirth(registerRequestDTO.getDateOfBirth());
+        user.setContactNumber(registerRequestDTO.getContactNumber());
+        user.setAddress(registerRequestDTO.getAddress());
+        user.setAge(registerRequestDTO.getAge());
+        user.setPassword(registerRequestDTO.getPassword());
+        user.setNationality(registerRequestDTO.getNationality());
+        user.setRole(String.valueOf(RoleEnum.USER));
+        User userData = userRepository.save(user);
+        return resp;
 
     }
 
