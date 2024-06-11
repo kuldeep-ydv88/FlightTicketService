@@ -1,4 +1,4 @@
-package com.airlines.user;
+package com.airlines.user.entity;
 
 import lombok.Data;
 import lombok.experimental.Accessors;

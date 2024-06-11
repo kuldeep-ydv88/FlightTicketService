@@ -1,6 +1,6 @@
 package com.airlines.login.repository;
 
-import com.airlines.user.User;
+import com.airlines.user.entity.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Optional;
