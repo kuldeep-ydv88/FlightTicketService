@@ -18,6 +18,6 @@ public class SearchFlightDTO {
     private String departOn;
     @NotBlank(message = MessageKeyConstant.MANDATORY_PARAM_MISSING)
     private String travelClass;
-   private String numberOfPassengers;
+    private String numberOfPassengers;
 
 }

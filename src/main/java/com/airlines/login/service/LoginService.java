@@ -4,20 +4,15 @@ import com.airlines.common.constant.MessageKeyConstant;
 import com.airlines.common.enums.RoleEnum;
 import com.airlines.login.dto.*;
 import com.airlines.login.repository.UserRepository;
-import com.airlines.user.User;
-import jakarta.servlet.http.HttpServletRequest;
+import com.airlines.user.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
-import java.util.Optional;
-import java.util.UUID;
 
 /**
  * This is a login service class in here all the login operation occurs
@@ -62,20 +57,20 @@ public class LoginService {
     public AuthResponse registerUser(RegisterRequestDTO registerRequestDTO) {
         AuthResponse resp = new AuthResponse();
 
-            User user = new User();
-            user.setUserName(registerRequestDTO.getUserName());
-            user.setFirstName(registerRequestDTO.getFirstName());
-            user.setLastName(registerRequestDTO.getLastName());
-            user.setEmail(registerRequestDTO.getEmail());
-            user.setDateOfBirth(registerRequestDTO.getDateOfBirth());
-            user.setContactNumber(registerRequestDTO.getContactNumber());
-            user.setAddress(registerRequestDTO.getAddress());
-            user.setAge(registerRequestDTO.getAge());
-            user.setPassword(registerRequestDTO.getPassword());
-            user.setNationality(registerRequestDTO.getNationality());
-            user.setRole(String.valueOf(RoleEnum.USER));
-            User userData = userRepository.save(user);
-            return resp;
+        User user = new User();
+        user.setUserName(registerRequestDTO.getUserName());
+        user.setFirstName(registerRequestDTO.getFirstName());
+        user.setLastName(registerRequestDTO.getLastName());
+        user.setEmail(registerRequestDTO.getEmail());
+        user.setDateOfBirth(registerRequestDTO.getDateOfBirth());
+        user.setContactNumber(registerRequestDTO.getContactNumber());
+        user.setAddress(registerRequestDTO.getAddress());
+        user.setAge(registerRequestDTO.getAge());
+        user.setPassword(registerRequestDTO.getPassword());
+        user.setNationality(registerRequestDTO.getNationality());
+        user.setRole(String.valueOf(RoleEnum.USER));
+        User userData = userRepository.save(user);
+        return resp;
 
     }
 
