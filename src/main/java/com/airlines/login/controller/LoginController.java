@@ -26,10 +26,10 @@ public class LoginController {
      * @param loginRequestDTO
      * @return
      */
-    @Operation(summary = "login API", description = "request contains user's email and password")
+    @Operation(summary = "login API", description = "request contains user's username and password")
     @PostMapping("/login")
     public AuthResponse login(@RequestBody @Valid LoginRequestDTO loginRequestDTO) {
-        log.info("LoggedIn user email {}", loginRequestDTO.getEmail());
+        log.info("LoggedIn user email {}", loginRequestDTO.getUsername());
         return loginService.login(loginRequestDTO);
     }
 
@@ -41,7 +41,7 @@ public class LoginController {
      */
     @Operation(summary = "register API", description = "request contains user details")
     @PostMapping("/register")
-    public AuthResponse registerUser(@RequestBody @Valid RegisterRequestDTO registerRequestDTO) {
+    public SignUpResponse registerUser(@RequestBody @Valid RegisterRequestDTO registerRequestDTO) {
         log.info("we have to register for the user email : {}", registerRequestDTO.getEmail());
         return loginService.registerUser(registerRequestDTO);
     }

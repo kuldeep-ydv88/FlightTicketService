@@ -1,19 +1,20 @@
 package com.airlines.login.dto;
 
+import com.airlines.role.Role;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@Builder
 public class AuthResponse {
-
-    private int statusCode;
-    private String message;
     private String token;
-    private String refreshToken;
-    private String userName;
-    private String role;
-
+    private Role role;
+    private String fistName;
+    private String lastName;
+    private String phoneNumber;
+    private String id;
 }

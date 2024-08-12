@@ -1,8 +1,10 @@
-package com.airlines.user.entity;
+package com.airlines.user;
 
+import com.airlines.role.Role;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -32,11 +34,12 @@ public class User implements UserDetails {
     private String age;
     private String nationality;
     private String address;
-    private String role;
+    @DBRef
+    private Role role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role));
+        return List.of(new SimpleGrantedAuthority(role.getName()));
     }
 
     @Override
