@@ -1,4 +1,4 @@
-package com.airlines.login.dto;
+package com.airlines.user.dto;
 
 import com.airlines.common.constant.MessageKeyConstant;
 import lombok.Getter;

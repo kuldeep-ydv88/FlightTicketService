@@ -1,4 +1,4 @@
-package com.airlines.exceptions;
+package com.airlines;
 
 import com.airlines.role.RoleException;
 import org.springframework.http.ResponseEntity;

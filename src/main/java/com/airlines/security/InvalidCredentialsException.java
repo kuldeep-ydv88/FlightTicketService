@@ -1,4 +1,4 @@
-package com.airlines.login;
+package com.airlines.security;
 
 import lombok.Data;
 

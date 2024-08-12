@@ -1,4 +1,4 @@
-package com.airlines.login.service;
+package com.airlines.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

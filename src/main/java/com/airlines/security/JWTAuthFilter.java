@@ -1,7 +1,5 @@
-package com.airlines.login.config;
+package com.airlines.security;
 
-import com.airlines.login.service.JWTUtils;
-import com.airlines.login.service.UserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

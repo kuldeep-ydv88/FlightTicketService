@@ -1,6 +1,5 @@
-package com.airlines.login.config;
+package com.airlines.security;
 
-import com.airlines.login.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

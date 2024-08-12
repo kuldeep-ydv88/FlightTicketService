@@ -1,18 +1,15 @@
-package com.airlines.login.service;
+package com.airlines.auth;
 
-import com.airlines.common.enums.RoleEnum;
-import com.airlines.login.InvalidCredentialsException;
-import com.airlines.login.dto.*;
-import com.airlines.login.repository.UserRepository;
+import com.airlines.common.dto.APIResponseDTO;
+import com.airlines.security.InvalidCredentialsException;
 import com.airlines.role.Role;
-import com.airlines.role.RoleException;
 import com.airlines.role.RoleService;
+import com.airlines.security.JWTUtils;
 import com.airlines.user.User;
 import com.airlines.user.UserException;
 import com.airlines.user.UserInfoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -21,7 +18,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
 /**
@@ -32,9 +28,8 @@ import java.util.Objects;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class LoginService {
+public class AuthenticationService {
 
-    private final UserRepository userRepository;
     private final JWTUtils jwtUtils;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
@@ -95,21 +90,17 @@ public class LoginService {
 
     }
 
-    public APIResponseDTO changePassword(ChangePasswordRequestDTO changePasswordRequestDTO, String email) {
-        return null;
-    }
 
     public RefreshTokenResponseDTO refreshToken(AuthResponse authResponse) {
         RefreshTokenResponseDTO response = new RefreshTokenResponseDTO();
-        String ourEmail = jwtUtils.extractUsername(authResponse.getToken());
-        User users = userRepository.findByEmail(ourEmail).orElseThrow();
+        String username = jwtUtils.extractUsername(authResponse.getToken());
+        User users = (User) userInfoService.loadUserByUsername(username);
         if (jwtUtils.isTokenValid(authResponse.getToken(), users)) {
             var jwt = jwtUtils.generateToken(users);
             response.setJwtToken(jwt);
             response.setTkExpms("24");
         }
         return response;
-
     }
 
 }

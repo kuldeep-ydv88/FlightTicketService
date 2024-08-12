@@ -1,6 +1,5 @@
-package com.airlines.login.dto;
+package com.airlines.auth;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 

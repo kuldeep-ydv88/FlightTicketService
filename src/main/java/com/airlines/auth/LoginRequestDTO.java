@@ -1,8 +1,6 @@
-package com.airlines.login.dto;
+package com.airlines.auth;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 @Data
 public class LoginRequestDTO {
