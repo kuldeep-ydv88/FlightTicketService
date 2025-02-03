@@ -30,7 +30,7 @@ public class AuthenticationController {
         return authenticationService.login(loginRequestDTO);
     }
 
-    @Operation(summary = "register API", description = "request contains user details")
+    @Operation(summary = "register API", description =   "request contains user details")
     @PostMapping("/register")
     public AuthResponse registerUser(@RequestBody @Valid RegisterRequestDTO registerRequestDTO) {
         log.info("we have to register for the user email : {}", registerRequestDTO.getEmail());
