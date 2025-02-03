@@ -17,12 +17,12 @@ import java.util.function.Function;
  * creating utils class for generating and validating tokens.
  */
 @Component
-public class JWTUtils {
+public class JwtTokenGenerator {
 
     private final SecretKey Key;
     private static final long EXPIRATION_TIME = 86400000;
 
-    public JWTUtils() {
+    public JwtTokenGenerator() {
         String secreteString = "843567893696976453275974432697R634976R738467TR678T34865R6834R8763T478378637664538745673865783678548735687R3";
         byte[] keyBytes = Base64.getDecoder().decode(secreteString.getBytes(StandardCharsets.UTF_8));
         this.Key = new SecretKeySpec(keyBytes, "HmacSHA256");

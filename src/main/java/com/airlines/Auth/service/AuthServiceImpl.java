@@ -6,7 +6,7 @@ import com.airlines.Auth.dto.RegisterRequestDTO;
 import com.airlines.Auth.dto.AuthResponse;
 import com.airlines.common.constant.MessageConstant;
 import com.airlines.common.enums.RoleEnum;
-import com.airlines.security.JWTUtils;
+import com.airlines.security.JwtTokenGenerator;
 import com.airlines.user.repository.UserRepository;
 import com.airlines.user.entity.UserInfo;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +23,7 @@ import java.util.HashMap;
 public class AuthServiceImpl implements AuthenticationService {
     private final AuthenticationManager authenticationManager;
     private final UserRepository userRepository;
-    private final JWTUtils jwtUtils;
+    private final JwtTokenGenerator jwtUtils;
 
     @Override
     public AuthResponse login(LoginRequestDTO loginRequestDTO) {
