@@ -4,7 +4,7 @@ import com.airlines.common.constant.MessageKeyConstant;
 import com.airlines.common.enums.RoleEnum;
 import com.airlines.login.dto.*;
 import com.airlines.login.repository.UserRepository;
-import com.airlines.user.entity.User;
+import com.airlines.user.UserInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -57,7 +57,7 @@ public class LoginService {
     public AuthResponse registerUser(RegisterRequestDTO registerRequestDTO) {
         AuthResponse resp = new AuthResponse();
 
-        User user = new User();
+        UserInfo user = new UserInfo();
         user.setUserName(registerRequestDTO.getUserName());
         user.setFirstName(registerRequestDTO.getFirstName());
         user.setLastName(registerRequestDTO.getLastName());
@@ -69,7 +69,7 @@ public class LoginService {
         user.setPassword(registerRequestDTO.getPassword());
         user.setNationality(registerRequestDTO.getNationality());
         user.setRole(String.valueOf(RoleEnum.USER));
-        User userData = userRepository.save(user);
+        UserInfo userData = userRepository.save(user);
         return resp;
 
     }
@@ -81,7 +81,7 @@ public class LoginService {
     public RefreshTokenResponseDTO refreshToken(AuthResponse authResponse) {
         RefreshTokenResponseDTO response = new RefreshTokenResponseDTO();
         String ourEmail = jwtUtils.extractUsername(authResponse.getToken());
-        User users = userRepository.findByEmail(ourEmail).orElseThrow();
+        UserInfo users = userRepository.findByEmail(ourEmail).orElseThrow();
         if (jwtUtils.isTokenValid(authResponse.getToken(), users)) {
             var jwt = jwtUtils.generateToken(users);
             response.setJwtToken(jwt);

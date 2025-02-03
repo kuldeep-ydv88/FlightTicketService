@@ -1,4 +1,4 @@
-package com.airlines.login.config;
+package com.airlines.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,10 +1,10 @@
 package com.airlines.login.repository;
 
-import com.airlines.user.entity.User;
+import com.airlines.user.UserInfo;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Optional;
 
-public interface UserRepository extends MongoRepository<User,Integer> {
-    Optional<User> findByEmail(String email);
+public interface UserRepository extends MongoRepository<UserInfo,Integer> {
+    Optional<UserInfo> findByEmail(String email);
 }

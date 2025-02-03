@@ -1,4 +1,4 @@
-package com.airlines.user.entity;
+package com.airlines.user;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -12,11 +12,13 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-
+/**
+ * @author Kuldeep
+ */
 @Data
 @Document("users")
 @Accessors(chain = true)
-public class User implements UserDetails {
+public class UserInfo implements UserDetails {
 
     private static final long serialVersionUID = 7954325925563724664L;
 

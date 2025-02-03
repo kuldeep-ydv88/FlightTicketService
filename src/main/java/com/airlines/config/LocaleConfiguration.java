@@ -15,8 +15,8 @@ import java.util.Locale;
  */
 @Configuration
 public class LocaleConfiguration {
-    private static String BASE_NAME = "message";
-    private static String DEFAULT_ENCODING = "UTF-8";
+    private static final String BASE_NAME = "message";
+    private static final String DEFAULT_ENCODING = "UTF-8";
 
     @Bean(name = "customMessageSource")
     public MessageSource messageSource() {
