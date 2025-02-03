@@ -1,39 +1,33 @@
-package com.airlines.login.service;
+package com.airlines.Auth.service;
 
+import com.airlines.Auth.dto.LoginRequestDTO;
+import com.airlines.Auth.dto.RefreshTokenResponseDTO;
+import com.airlines.Auth.dto.RegisterRequestDTO;
+import com.airlines.Auth.dto.AuthResponse;
 import com.airlines.common.constant.MessageKeyConstant;
 import com.airlines.common.enums.RoleEnum;
-import com.airlines.login.dto.*;
-import com.airlines.login.repository.UserRepository;
-import com.airlines.user.UserInfo;
+import com.airlines.security.JWTUtils;
+import com.airlines.user.repository.UserRepository;
+import com.airlines.user.entity.UserInfo;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 
-/**
- * This is a login service class in here all the login operation occurs
- *
- * @Author kuldeep-ydv88
- */
 @Service
+@RequiredArgsConstructor
 @Slf4j
-public class LoginService {
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private JWTUtils jwtUtils;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-    @Autowired
-    private AuthenticationManager authenticationManager;
+public class AuthServiceImpl implements AuthenticationService {
+    private final AuthenticationManager authenticationManager;
+    private final UserRepository userRepository;
+    private final JWTUtils jwtUtils;
 
-
+    @Override
     public AuthResponse login(LoginRequestDTO loginRequestDTO) {
-        AuthResponse authResponse = new AuthResponse();
+       AuthResponse authResponse = new AuthResponse();
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequestDTO.getEmail(), loginRequestDTO.getPassword()));
             var user = userRepository.findByEmail(loginRequestDTO.getEmail()).orElseThrow();
@@ -54,9 +48,9 @@ public class LoginService {
         return authResponse;
     }
 
+    @Override
     public AuthResponse registerUser(RegisterRequestDTO registerRequestDTO) {
         AuthResponse resp = new AuthResponse();
-
         UserInfo user = new UserInfo();
         user.setUserName(registerRequestDTO.getUserName());
         user.setFirstName(registerRequestDTO.getFirstName());
@@ -74,10 +68,7 @@ public class LoginService {
 
     }
 
-    public APIResponseDTO changePassword(ChangePasswordRequestDTO changePasswordRequestDTO, String email) {
-        return null;
-    }
-
+    @Override
     public RefreshTokenResponseDTO refreshToken(AuthResponse authResponse) {
         RefreshTokenResponseDTO response = new RefreshTokenResponseDTO();
         String ourEmail = jwtUtils.extractUsername(authResponse.getToken());
@@ -85,7 +76,7 @@ public class LoginService {
         if (jwtUtils.isTokenValid(authResponse.getToken(), users)) {
             var jwt = jwtUtils.generateToken(users);
             response.setJwtToken(jwt);
-            response.setTkExpms("24");
+            response.setTokenExpiration("24");
         }
         return response;
 

@@ -1,13 +1,13 @@
-package com.airlines.login.dto;
+package com.airlines.user.dto;
 
 import com.airlines.common.constant.MessageKeyConstant;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 
-@Getter
-@Setter
+@Data
 public class ChangePasswordRequestDTO {
 
     @NotBlank(message = MessageKeyConstant.MANDATORY_PARAM_MISSING)

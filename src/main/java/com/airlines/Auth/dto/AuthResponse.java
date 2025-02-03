@@ -1,4 +1,4 @@
-package com.airlines.login.dto;
+package com.airlines.Auth.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;

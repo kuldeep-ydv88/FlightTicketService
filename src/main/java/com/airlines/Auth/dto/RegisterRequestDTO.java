@@ -1,9 +1,7 @@
-package com.airlines.Auth;
+package com.airlines.Auth.dto;
 
 import com.airlines.common.constant.MessageKeyConstant;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 import java.util.Date;

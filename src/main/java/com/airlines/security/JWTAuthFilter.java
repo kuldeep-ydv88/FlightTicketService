@@ -1,11 +1,11 @@
-package com.airlines.login.config;
+package com.airlines.security;
 
-import com.airlines.login.service.JWTUtils;
-import com.airlines.login.service.UserService;
+import com.airlines.user.service.UserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContext;
@@ -22,11 +22,11 @@ import java.io.IOException;
  * Authorization token
  */
 @Component
+@RequiredArgsConstructor
 public class JWTAuthFilter extends OncePerRequestFilter {
-    @Autowired
-    private JWTUtils jwtUtils;
-    @Autowired
-    private UserService userService;
+    private final JWTUtils jwtUtils;
+
+    private final UserService userService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {

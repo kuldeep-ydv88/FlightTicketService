@@ -1,13 +1,11 @@
 package com.airlines.common.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
-@Getter
-@Setter
+@Data
 public class BaseAuditableEntity {
     @CreatedBy
     private String createdBy;

@@ -1,4 +1,4 @@
-package com.airlines.Auth;
+package com.airlines.Auth.dto;
 
 import lombok.Data;
 

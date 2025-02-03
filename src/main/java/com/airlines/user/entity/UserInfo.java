@@ -1,4 +1,4 @@
-package com.airlines.user;
+package com.airlines.user.entity;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -8,6 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.io.Serial;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -20,6 +21,7 @@ import java.util.List;
 @Accessors(chain = true)
 public class UserInfo implements UserDetails {
 
+    @Serial
     private static final long serialVersionUID = 7954325925563724664L;
 
     @Id
