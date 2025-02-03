@@ -4,7 +4,7 @@ import com.airlines.Auth.dto.LoginRequestDTO;
 import com.airlines.Auth.dto.RefreshTokenResponseDTO;
 import com.airlines.Auth.dto.RegisterRequestDTO;
 import com.airlines.Auth.dto.AuthResponse;
-import com.airlines.common.constant.MessageKeyConstant;
+import com.airlines.common.constant.MessageConstant;
 import com.airlines.common.enums.RoleEnum;
 import com.airlines.security.JWTUtils;
 import com.airlines.user.repository.UserRepository;
@@ -39,7 +39,7 @@ public class AuthServiceImpl implements AuthenticationService {
             authResponse.setRefreshToken(refreshToken);
             authResponse.setUserName(user.getUsername());
             authResponse.setRole(user.getRole());
-            authResponse.setMessage(MessageKeyConstant.LOGIN_SUCCESSFULLY);
+            authResponse.setMessage(MessageConstant.LOGIN_SUCCESSFULLY);
         } catch (Exception e) {
             authResponse.setStatusCode(500);
             authResponse.setMessage(e.getMessage());
