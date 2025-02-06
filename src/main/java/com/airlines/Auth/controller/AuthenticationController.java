@@ -1,9 +1,6 @@
 package com.airlines.Auth.controller;
 
-import com.airlines.Auth.dto.AuthResponse;
-import com.airlines.Auth.dto.LoginRequestDTO;
-import com.airlines.Auth.dto.RefreshTokenResponseDTO;
-import com.airlines.Auth.dto.RegisterRequestDTO;
+import com.airlines.Auth.dto.*;
 import com.airlines.Auth.service.AuthenticationService;
 import com.airlines.common.dto.APIResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
@@ -32,7 +29,7 @@ public class AuthenticationController {
 
     @Operation(summary = "register API", description =   "request contains user details")
     @PostMapping("/register")
-    public AuthResponse registerUser(@RequestBody @Valid RegisterRequestDTO registerRequestDTO) {
+    public RegisterResponse registerUser(@RequestBody @Valid RegisterRequestDTO registerRequestDTO) {
         return authenticationService.registerUser(registerRequestDTO);
     }
 

@@ -1,21 +1,27 @@
 package com.airlines.Auth.service;
 
-import com.airlines.Auth.dto.LoginRequestDTO;
-import com.airlines.Auth.dto.RefreshTokenResponseDTO;
-import com.airlines.Auth.dto.RegisterRequestDTO;
-import com.airlines.Auth.dto.AuthResponse;
+import com.airlines.Auth.dto.*;
 import com.airlines.common.constant.MessageConstant;
 import com.airlines.common.enums.RoleEnum;
+import com.airlines.exception.InvalidCredentialsException;
 import com.airlines.security.JwtTokenGenerator;
 import com.airlines.user.repository.UserRepository;
 import com.airlines.user.entity.UserInfo;
+import com.airlines.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.HashMap;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -23,34 +29,59 @@ import java.util.HashMap;
 public class AuthServiceImpl implements AuthenticationService {
     private final AuthenticationManager authenticationManager;
     private final UserRepository userRepository;
-    private final JwtTokenGenerator jwtUtils;
+    private final JwtTokenGenerator jwtTokenGenerator;
+    private final UserService userService;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
-    public AuthResponse login(LoginRequestDTO loginRequestDTO) {
-       AuthResponse authResponse = new AuthResponse();
-        try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequestDTO.getEmail(), loginRequestDTO.getPassword()));
-            var user = userRepository.findByEmail(loginRequestDTO.getEmail()).orElseThrow();
-            log.info("This user present in the db : {}", user);
-            var jwt = jwtUtils.generateToken(user);
-            var refreshToken = jwtUtils.generateRefreshToken(new HashMap<>(), user);
-            authResponse.setStatusCode(200);
-            authResponse.setToken(jwt);
-            authResponse.setRefreshToken(refreshToken);
-            authResponse.setUserName(user.getUsername());
-            authResponse.setRole(user.getRole());
-            authResponse.setMessage(MessageConstant.LOGIN_SUCCESSFULLY);
-        } catch (Exception e) {
-            authResponse.setStatusCode(500);
-            authResponse.setMessage(e.getMessage());
-
+    public AuthResponse login(LoginRequestDTO loginRequest) {
+        UserDetails userDetails = userService.loadUserByUsername(loginRequest.getEmail());
+        if (Objects.isNull(userDetails)) {
+            throw new InvalidCredentialsException("You are not registered with us. Please sign up.", HttpStatus.UNAUTHORIZED.value());
         }
-        return authResponse;
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
+                loginRequest.getEmail(), loginRequest.getPassword());
+        authenticationManager.authenticate(authenticationToken);
+        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+        try {
+            UserInfo userInfo = (UserInfo) userDetails;
+            String authToken = jwtTokenGenerator.generate(userInfo, false);
+            String refreshToken = jwtTokenGenerator.generate(userInfo, true);
+            return AuthResponse.builder()
+                    .statusCode(HttpStatus.OK.value())
+                    .message("Login successful!")
+                    .id(userInfo.getId())
+                    .userName(userInfo.getUsername())
+                    .role(userInfo.getRole())
+                    .token(authToken)
+                    .refreshToken(refreshToken)
+                    .build();
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+            throw new RuntimeException("Error while generating tokens.", e);
+        }
     }
 
     @Override
-    public AuthResponse registerUser(RegisterRequestDTO registerRequestDTO) {
-        AuthResponse resp = new AuthResponse();
+    public RegisterResponse registerUser(RegisterRequestDTO registerRequestDTO) {
+        if (userRepository.findByEmail(registerRequestDTO.getEmail()).isPresent()) {
+            return RegisterResponse.builder()
+                    .statusCode(HttpStatus.CONFLICT.value())
+                    .message("Email already registered. Please login.")
+                    .build();
+        }
+        String encryptedPassword = passwordEncoder.encode(registerRequestDTO.getPassword());
+        final var user = createUser(registerRequestDTO, encryptedPassword);
+        UserInfo savedUser = userRepository.save(user);
+        return RegisterResponse.builder()
+                .statusCode(HttpStatus.CREATED.value())
+                .message("Registration successful!")
+                .id(savedUser.getId())
+                .userName(savedUser.getUsername())
+                .userInfo(savedUser)
+                .build();
+    }
+
+    private static UserInfo createUser(RegisterRequestDTO registerRequestDTO, String encryptedPassword) {
         UserInfo user = new UserInfo();
         user.setUserName(registerRequestDTO.getUserName());
         user.setFirstName(registerRequestDTO.getFirstName());
@@ -60,26 +91,10 @@ public class AuthServiceImpl implements AuthenticationService {
         user.setContactNumber(registerRequestDTO.getContactNumber());
         user.setAddress(registerRequestDTO.getAddress());
         user.setAge(registerRequestDTO.getAge());
-        user.setPassword(registerRequestDTO.getPassword());
+        user.setPassword(encryptedPassword);
         user.setNationality(registerRequestDTO.getNationality());
-        user.setRole(String.valueOf(RoleEnum.USER));
-        UserInfo userData = userRepository.save(user);
-        return resp;
-
-    }
-
-    @Override
-    public RefreshTokenResponseDTO refreshToken(AuthResponse authResponse) {
-        RefreshTokenResponseDTO response = new RefreshTokenResponseDTO();
-        String ourEmail = jwtUtils.extractUsername(authResponse.getToken());
-        UserInfo users = userRepository.findByEmail(ourEmail).orElseThrow();
-        if (jwtUtils.isTokenValid(authResponse.getToken(), users)) {
-            var jwt = jwtUtils.generateToken(users);
-            response.setJwtToken(jwt);
-            response.setTokenExpiration("24");
-        }
-        return response;
-
+        user.setRole(registerRequestDTO.getRole() != null ? registerRequestDTO.getRole() : String.valueOf(RoleEnum.USER));
+        return user;
     }
 
 }

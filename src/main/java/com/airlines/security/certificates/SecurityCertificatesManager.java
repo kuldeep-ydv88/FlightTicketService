@@ -1,5 +1,6 @@
 package com.airlines.security.certificates;
 
+import com.airlines.common.constant.Constant;
 import com.airlines.common.constant.MessageConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,16 +26,16 @@ public class SecurityCertificatesManager {
     private String privateKey;
 
     public PublicKey getPublicKey() throws NoSuchAlgorithmException, InvalidKeySpecException {
-        publicKey = publicKey.replace(MessageConstant.PUBLIC_KEY_START_TEXT, MessageConstant.EMPTY)
-                .replace(MessageConstant.PUBLIC_KEY_END_TEXT, MessageConstant.EMPTY);
+        publicKey = publicKey.replace(MessageConstant.PUBLIC_KEY_START_TEXT, Constant.EMPTY)
+                .replace(MessageConstant.PUBLIC_KEY_END_TEXT, Constant.EMPTY);
         return KeyFactory
                 .getInstance(MessageConstant.RSA)
                 .generatePublic(new X509EncodedKeySpec(Base64.getDecoder().decode(publicKey)));
     }
 
     public PrivateKey getPrivateKey() throws NoSuchAlgorithmException, InvalidKeySpecException {
-        privateKey = privateKey.replace(MessageConstant.PRIVATE_KEY_START_TEXT, MessageConstant.EMPTY)
-                .replace(MessageConstant.PRIVATE_KEY_END_TEXT, MessageConstant.EMPTY);
+        privateKey = privateKey.replace(MessageConstant.PRIVATE_KEY_START_TEXT, Constant.EMPTY)
+                .replace(MessageConstant.PRIVATE_KEY_END_TEXT, Constant.EMPTY);
 
         return KeyFactory
                 .getInstance(MessageConstant.RSA)
