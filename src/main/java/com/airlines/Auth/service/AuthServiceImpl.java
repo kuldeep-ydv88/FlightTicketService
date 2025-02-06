@@ -1,13 +1,13 @@
 package com.airlines.Auth.service;
 
 import com.airlines.Auth.dto.*;
-import com.airlines.common.constant.MessageConstant;
+import com.airlines.common.constant.Constant;
 import com.airlines.common.enums.RoleEnum;
 import com.airlines.exception.InvalidCredentialsException;
 import com.airlines.security.JwtTokenGenerator;
-import com.airlines.user.repository.UserRepository;
 import com.airlines.user.entity.UserInfo;
-import com.airlines.user.service.UserService;
+import com.airlines.user.exception.UserException;
+import com.airlines.user.service.UserInfoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -20,7 +20,6 @@ import org.springframework.stereotype.Service;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
-import java.util.HashMap;
 import java.util.Objects;
 
 @Service
@@ -28,9 +27,8 @@ import java.util.Objects;
 @Slf4j
 public class AuthServiceImpl implements AuthenticationService {
     private final AuthenticationManager authenticationManager;
-    private final UserRepository userRepository;
     private final JwtTokenGenerator jwtTokenGenerator;
-    private final UserService userService;
+    private final UserInfoService userService;
     private final PasswordEncoder passwordEncoder;
 
     @Override
@@ -63,15 +61,12 @@ public class AuthServiceImpl implements AuthenticationService {
 
     @Override
     public RegisterResponse registerUser(RegisterRequestDTO registerRequestDTO) {
-        if (userRepository.findByEmail(registerRequestDTO.getEmail()).isPresent()) {
-            return RegisterResponse.builder()
-                    .statusCode(HttpStatus.CONFLICT.value())
-                    .message("Email already registered. Please login.")
-                    .build();
+        if(Objects.nonNull(userService.findByEmail(registerRequestDTO.getEmail()))){
+            throw new UserException(Constant.EMAIL_EXISTS);
         }
         String encryptedPassword = passwordEncoder.encode(registerRequestDTO.getPassword());
         final var user = createUser(registerRequestDTO, encryptedPassword);
-        UserInfo savedUser = userRepository.save(user);
+        UserInfo savedUser = userService.save(user);
         return RegisterResponse.builder()
                 .statusCode(HttpStatus.CREATED.value())
                 .message("Registration successful!")

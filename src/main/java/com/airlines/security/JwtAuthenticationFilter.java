@@ -1,9 +1,7 @@
 package com.airlines.security;
 
 import com.airlines.common.constant.Constant;
-import com.airlines.common.constant.MessageConstant;
 import com.airlines.exception.InvalidCredentialsException;
-import com.airlines.user.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
@@ -12,13 +10,12 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -29,8 +26,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,6 +35,7 @@ import java.util.Map;
  */
 @Component
 @Slf4j
+@Order(2)
 public class JwtAuthenticationFilter extends OncePerRequestFilter implements AuthenticationEntryPoint {
     private final JwtTokenValidator jwtTokenValidator;
     private final UserDetailsService userDetailsService;

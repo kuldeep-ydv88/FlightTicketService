@@ -15,7 +15,7 @@ import javax.validation.Valid;
  */
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(value = "/auth")
+@RequestMapping(value = "public/auth")
 @Slf4j
 public class AuthenticationController {
     private final AuthenticationService authenticationService;

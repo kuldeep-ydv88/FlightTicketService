@@ -3,7 +3,7 @@ package com.airlines.user.controller;
 import com.airlines.user.dto.ChangePasswordRequestDTO;
 import com.airlines.user.dto.UserInfoDto;
 import com.airlines.user.entity.UserInfo;
-import com.airlines.user.service.UserService;
+import com.airlines.user.service.UserInfoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +20,7 @@ import java.util.List;
 @RequestMapping("")
 @Slf4j
 public class UserController {
-    private final UserService userService;
+    private final UserInfoService userService;
 
     @GetMapping
     public ResponseEntity<List<UserInfo>> getAllUsers() {
