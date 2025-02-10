@@ -2,6 +2,7 @@ package com.airlines.Auth.service;
 
 import com.airlines.Auth.dto.*;
 import com.airlines.common.constant.Constant;
+import com.airlines.common.constant.MessageConstant;
 import com.airlines.common.enums.RoleEnum;
 import com.airlines.exception.InvalidCredentialsException;
 import com.airlines.security.JwtTokenGenerator;
@@ -47,7 +48,7 @@ public class AuthServiceImpl implements AuthenticationService {
             String refreshToken = jwtTokenGenerator.generate(userInfo, true);
             return AuthResponse.builder()
                     .statusCode(HttpStatus.OK.value())
-                    .message("Login successful!")
+                    .message(MessageConstant.LOGIN_SUCCESSFULLY)
                     .id(userInfo.getId())
                     .userName(userInfo.getUsername())
                     .role(userInfo.getRole())

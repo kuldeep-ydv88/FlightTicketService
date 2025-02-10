@@ -26,19 +26,19 @@ public class SecurityCertificatesManager {
     private String privateKey;
 
     public PublicKey getPublicKey() throws NoSuchAlgorithmException, InvalidKeySpecException {
-        publicKey = publicKey.replace(MessageConstant.PUBLIC_KEY_START_TEXT, Constant.EMPTY)
-                .replace(MessageConstant.PUBLIC_KEY_END_TEXT, Constant.EMPTY);
+        publicKey = publicKey.replace(Constant.PUBLIC_KEY_START_TEXT, Constant.EMPTY)
+                .replace(Constant.PUBLIC_KEY_END_TEXT, Constant.EMPTY);
         return KeyFactory
-                .getInstance(MessageConstant.RSA)
+                .getInstance(Constant.RSA)
                 .generatePublic(new X509EncodedKeySpec(Base64.getDecoder().decode(publicKey)));
     }
 
     public PrivateKey getPrivateKey() throws NoSuchAlgorithmException, InvalidKeySpecException {
-        privateKey = privateKey.replace(MessageConstant.PRIVATE_KEY_START_TEXT, Constant.EMPTY)
-                .replace(MessageConstant.PRIVATE_KEY_END_TEXT, Constant.EMPTY);
+        privateKey = privateKey.replace(Constant.PRIVATE_KEY_START_TEXT, Constant.EMPTY)
+                .replace(Constant.PRIVATE_KEY_END_TEXT, Constant.EMPTY);
 
         return KeyFactory
-                .getInstance(MessageConstant.RSA)
+                .getInstance(Constant.RSA)
                 .generatePrivate(new PKCS8EncodedKeySpec(Base64.getDecoder().decode(privateKey)));
     }
 }
