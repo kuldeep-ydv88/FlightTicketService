@@ -1,0 +1,40 @@
+
+.Search-card{
+  position: relative;
+  left: 2.0%;
+  width: 97%;
+  top: 15%;
+
+}
+
+.mat-mdc-radio-button ~ .mat-mdc-radio-button {
+    margin-left: 10px;
+  }
+
+  .search-box{
+    display: flex;
+    gap: 7px;
+    justify-content: center;
+    
+
+  }
+  .radio{
+    display: flex;
+    justify-content: center;
+  }
+  .main{
+    margin-top: 19px; 
+  }
+
+  .search-flight{
+    height: 100%;
+    background-size:cover;
+    background-image: url('../../../../assets/beach-4852830_1920.jpg');
+
+  }
+.button{
+    background-color:rgb(64, 128, 206) ;
+    color: white;
+    width: 146px;
+    height: 52px;
+}

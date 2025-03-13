@@ -1,0 +1,45 @@
+<mat-toolbar>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="opened = !opened">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="example-spacer"></span>
+    <button mat-button [matMenuTriggerFor]="menu">Kuldeep yadav
+      <mat-icon>person</mat-icon></button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/dashboard/profile">
+        <mat-icon>face</mat-icon>My Profile
+      </button>
+      <button mat-menu-item routerLink="/dashboard/change-password">
+        <mat-icon>key</mat-icon>Change Password
+      </button>
+      <button mat-menu-item (click)="logOut()">
+        <mat-icon>exit_to_app</mat-icon>Logout
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav [(opened)]="opened" mode="side" class="sidenav">
+      <mat-nav-list>
+        <a mat-list-item routerLink="/dashboard/main-page" (click)="sidenav.close()">
+          <mat-icon>home</mat-icon>
+          <span>Home</span>
+        </a>
+        <a mat-list-item routerLink="/dashboard/profile" (click)="sidenav.close()">
+          <mat-icon>person</mat-icon>
+          <span>Profile</span>
+        </a>
+        <a mat-list-item routerLink="/dashboard/myBooking" (click)="sidenav.close()">
+          <mat-icon>airlines</mat-icon>
+          <span>My Booking</span>
+        </a>
+        <a mat-list-item routerLink="hiiiiiii" (click)="sidenav.close()">
+          <mat-icon>support_agent</mat-icon>
+          <span>Support</span>
+      </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+

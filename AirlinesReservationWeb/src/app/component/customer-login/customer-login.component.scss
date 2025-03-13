@@ -1,0 +1,43 @@
+.mat-card{
+    width: 40%;
+    height: 320px;
+    position: relative;
+    top: 135px;
+    text-align: center;
+    left: 50%;
+    border-radius: 2px;
+    transform: translateX(-50%);
+    
+   
+
+}
+.input{
+    width: 60%;
+    justify-content:center;
+    margin-top: 20px;
+    
+}
+.Cancel{
+    position: relative;
+   right: 23%;
+   color: white;
+   background: linear-gradient(to right, red, rgb(165, 66, 66));
+}
+.login{
+    position: fixed
+}
+.login-main{
+    height: 91%;
+    background-color: rgba(232, 219, 209, 0.673);
+    background-image: url('../../../assets/alexander-schimmeck-DSOohFTAfno-unsplash.jpg');
+    background-size: cover;
+    animation: changeBackground 20s infinite linear;
+    
+    @keyframes changeBackground {
+        0%  { background-image: url('../../../assets/alexander-schimmeck-DSOohFTAfno-unsplash.jpg'); }
+        33.33% { background-image: url('../../../assets/sebastian-grochowicz-flvyiQkkYYM-unsplash.jpg'); }
+        66.66% { background-image: url('../../../assets/lukas-souza-5KRFOTnpnnY-unsplash.jpg'); }
+        100% { background-image: url('../../../assets/nicole-geri-gMJ3tFOLvnA-unsplash.jpg'); }
+    }
+}
+

@@ -1,0 +1,53 @@
+.main{
+    text-align: center;
+    height: 60%;
+    background-image: url("../../../assets/airport-2373727_1280.jpg");
+    background-size:cover;
+}
+
+.heading{
+    position: relative;
+    top: 35%;
+    font-size:80px;
+    font-style: bold;
+
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+.main-h1{
+
+   margin-top: 20px;
+    left: 20px;
+    color: rgb(16, 16, 80);
+    font-size: xxx-large;
+    font-weight: 300;
+}
+
+.para{
+    font-size: 16x;
+    display: inline-block;
+    text-align: justify;
+    line-height: 23px;
+   
+}
+
+.heading {
+    opacity: 5;
+    animation: fadeIn 2s ease-in-out forwards;
+  
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+.about{
+    height: 100%;
+    background-color:  rgba(232, 219, 209, 0.673);;
+}

@@ -1,0 +1,141 @@
+<div class="home">
+<div class="main">
+    <div class="slogan">
+        <h1 style="color: white;position: relative;font-family: sans-serif;font-size: 60px;font-weight: 300;top: 166px;margin-left: 386px"> Fly anywhere, Fly everywhere</h1>
+    </div>
+
+    <mat-card class="search-card">
+        <form>
+           <div class="radio-button">
+            <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1">One Way</mat-radio-button>
+                <mat-radio-button value="2">Round Trip</mat-radio-button>
+            </mat-radio-group>
+           </div>
+           <div class="search-box">
+            <div> 
+                <mat-form-field class="input-1" appearance="outline">
+                    <mat-label>From</mat-label>
+                    <input type="text"
+                           placeholder="City"
+                           aria-label="Number"
+                           matInput
+                           [formControl]="myControl"
+                           [matAutocomplete]="auto">
+                    <mat-autocomplete #auto="matAutocomplete">
+                      <mat-option *ngFor="let option of filteredOptions | async" [value]="option.value">
+                        {{option.view_value}}
+                      </mat-option>
+                    </mat-autocomplete>
+                  </mat-form-field>
+            </div>
+            <div style="position: relative;margin-top:17px;">
+                <mat-icon>swap_horiz</mat-icon>
+              </div>
+            <div> 
+                <mat-form-field class="input-1" appearance="outline">
+                    <mat-label>To</mat-label>
+                    <input type="text"
+                           placeholder="Destination"
+                           aria-label="Number"
+                           matInput
+                           [formControl]="myControl"
+                           [matAutocomplete]="auto">
+                    <mat-autocomplete #auto="matAutocomplete">
+                      <mat-option *ngFor="let option of filteredOptions | async" [value]="option.value">
+                        {{option.view_value}}
+                      </mat-option>
+                    </mat-autocomplete>
+                  </mat-form-field>
+            </div>
+            
+            <div> 
+                <mat-form-field appearance="outline" class="input-2">
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput [matDatepicker]="picker" [min]="minDate">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="outline" class="input-2">
+                    <mat-label>Number of passengers</mat-label>
+                    <mat-select [(value)]="selected">
+                      <mat-option value="option1">1</mat-option>
+                      <mat-option value="option2">2</mat-option>
+                      <mat-option value="option3">3</mat-option>
+                      <mat-option value="option4">4</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+            <div>
+            <mat-form-field appearance="outline">
+                    <mat-label>CABIN CLASS</mat-label>
+                    <mat-select [(value)]="classEco">
+                      <mat-option value="option1">Economy</mat-option>
+                      <mat-option value="option2">Business</mat-option>
+                      <mat-option value="option3">Premium Economy</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+            <div>
+                <button mat-flat-button  style="background-color: rgb(64, 128, 206);color: white;height: 52px;width: 146px;"> <mat-icon>search</mat-icon>SEARCH</button>
+            </div>
+           </div>
+        </form>
+    </mat-card>
+</div>
+<div class="Top-route-Destination">
+    <h1 class="h3">Top Routes and Destination - Airlines Reservation System</h1>
+</div>
+<div class="mat-card">
+    <mat-card class="example-card-2" (mouseenter)="onMouseEnter(0)" (mouseleave)="onMouseLeave(0)" [ngClass]="{'hovered': isHovered[0]}">
+        <img src="../../../assets/artur-voznenko-GML74pAOOW8-unsplash.jpg" alt="" style="border-top-left-radius:20px;border-bottom-right-radius:20px">
+        <mat-card-content>
+        </mat-card-content>
+        <mat-card-title>Air India</mat-card-title>
+    </mat-card>
+    
+    <mat-card class="example-card-2"  (mouseenter)="onMouseEnter(1)" (mouseleave)="onMouseLeave(1)" [ngClass]="{'hovered': isHovered[1]}">
+        <img src="../../../assets/alexander-schimmeck-DSOohFTAfno-unsplash.jpg" alt="" style="border-top-left-radius:20px;border-bottom-right-radius:20px">
+        <mat-card-content>
+        </mat-card-content>
+        <mat-card-title>Quatar Airways</mat-card-title>
+    </mat-card>
+    <mat-card class="example-card-2"  (mouseenter)="onMouseEnter(2)" (mouseleave)="onMouseLeave(2)" [ngClass]="{'hovered': isHovered[2]}">
+        <img src="../../../assets/home-page.jpg" alt="" style="border-top-left-radius:20px;border-bottom-right-radius:20px">
+        <mat-card-content>
+        </mat-card-content>
+        <mat-card-title>Oman Air</mat-card-title>
+    </mat-card>
+    <mat-card class="example-card-2" (mouseenter)="onMouseEnter(3)" (mouseleave)="onMouseLeave(3)" [ngClass]="{'hovered': isHovered[3]}">
+        <img src="../../../assets/airport-2373727_1280.jpg" alt="" height="200px" style="border-top-left-radius:20px;border-bottom-right-radius:20px">
+        <mat-card-content>
+        </mat-card-content>
+        <mat-card-title>France</mat-card-title>
+    </mat-card>
+</div>
+<div class="about">
+    <h1>About Airlines Reservation</h1>
+    <P style="font-size: 16px; line-height: 24px;font-weight: 200;">
+        Creating content for an airline booking website involves providing clear and concise information to help users navigate the site, make informed decisions, and complete their bookings. Here are some key elements to consider when developing content for an airline booking website:
+        Feature an attractive and user-friendly design with a prominent search bar for flight searches.
+        Provide eye-catching images of popular destinations or promotions to engage users.
+        Include a brief introduction to the airline and its unique selling points.
+        Ensure a simple and intuitive search interface for users to enter their travel details.
+        Clearly display options for one-way, round-trip, and multi-city flights.
+        Include filters for departure and arrival times, airlines, and layovers.
+        Clearly outline the total cost of the flight, including taxes and fees.
+        Highlight any additional fees for baggage, seat selection, or other optional services.
+        Assure users of the website's security measures for handling personal and financial information.
+        Clearly explain the accepted payment methods and any security badges or certifications
+        Clearly state the airline's policies regarding cancellations, changes, and refunds.
+        Provide information on any fees associated with cancellations or modifications.
+        Encourage users to create accounts for easier booking and access to past reservations.
+        Highlight the benefits of having an account, such as exclusive promotions or loyalty programs.
+        Encourage users to create accounts for easier booking and access to past reservations.
+        Highlight the benefits of having an account, such as exclusive promotions or loyalty programs.
+    </P>
+</div>
+
+</div>

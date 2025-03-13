@@ -1,0 +1,115 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+.toolbar{
+    color: rgb(244, 248, 248);
+    background-color: rgb(14, 72, 110);
+    gap: 30px;
+    
+}  
+
+.main{
+ background-image: url('../../../assets/panorama-2117310_1280.jpg');
+ height: 60%;
+ width: 100%;
+ background-size: cover;
+ 
+
+ 
+}
+
+.h3{
+  text-align: center;
+  font-size:xx-large;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: rgb(17, 14, 125);
+  position: relative;
+  top: 20px;
+}
+
+.example-card-2{
+  width: 321px;
+  height: 250px;
+  border-radius: 10px;
+  transition: box-shadow 0.3s, transform 0.3s, background-color 0.3s;
+}
+
+.example-card-2.hovered {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: scale(1.05);
+  transition: box-shadow 0.3s, transform 0.3s;
+  background-color:#cf6464
+}
+
+.example-card-2.hovered mat-card-title {
+  color: white; 
+}
+
+.mat-card{
+  display: flex;
+  gap: 50px;
+  margin-left:49px;
+  position: relative;
+  top:22px;
+  text-align: center;
+  
+ 
+}
+.about{
+  margin-top: 50px;
+  margin-left: 50px;
+  
+}
+
+.home{
+ 
+  height: 100%;
+}
+
+
+// This is search card CSS 
+.mat-mdc-radio-button ~ .mat-mdc-radio-button {
+  margin-left: 16px;
+}
+
+.search-card{
+  position: relative;
+  left: 82px;
+  width: 90%;
+  top: 213px;
+  
+}
+
+.search-box{
+   display: flex;
+    gap: 10px;
+    position: relative;
+    left: 31px;
+    top: 7px;
+}
+
+.radio-button{
+  position: relative;
+  left: 24px;
+}
+
+.slogan{
+
+  h1{
+    opacity: 5;
+    animation: fadeIn 2s ease-in-out forwards;
+  
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  
+  }
+
+}

@@ -1,0 +1,164 @@
+.headingLine{
+    position: relative;
+    justify-content: center;
+    display: flex;
+    top:50px;
+    color:white;
+    font-weight: 500;
+    font-size: 50px;
+    font-family: 'Roboto', sans-serif;
+}
+.row{
+    margin-top: 10%;
+    max-width: 100%;
+}
+.heading{
+    font-weight: 200;
+    font-size: 46px;
+    position: relative;
+    left: 13.50%;
+    color:white;
+    font-family: sans-serif;
+}
+
+.content{
+    font-size: 30px;
+    line-height: 40px;
+    margin-top: 30px;
+    font-weight: lighter;
+    position: relative;
+    margin-left: 5%;
+    color:white;
+    font-family: sans-serif;
+}
+.forms input{
+    width: 90%;
+    height: 52px;
+    border-radius: 5px;
+   
+}
+.form-group{
+    margin-bottom: 10px;
+}
+button {
+    font-family: inherit;
+    font-size: 18px;
+    background: linear-gradient(to bottom, #4dc7d9 0%,#66a6ff 100%);
+    color: white;
+    padding: 0.8em 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s;
+  }
+  
+  button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  button:active {
+    transform: scale(0.95);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  button span {
+    display: block;
+    margin-left: 0.4em;
+    transition: all 0.3s;
+  }
+  
+  button svg {
+    width: 18px;
+    height: 18px;
+    fill: white;
+    transition: all 0.3s;
+  }
+  
+  .button .svg-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin-right: 0.5em;
+    transition: all 0.3s;
+  }
+  
+  .button:hover .svg-wrapper {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  
+  button:hover svg {
+    transform: rotate(45deg);
+  }
+  .main{
+    
+    height: 91%;
+    background-image: url('../../../assets/sebastian-grochowicz-flvyiQkkYYM-unsplash.jpg');
+    background-size: cover;
+  }
+  
+
+  .footer{
+    height: 50%;
+    background-color: black;
+    color: whitesmoke;
+    
+    
+  }
+
+  .about-me {
+    font-style:Arial;
+    font-weight: 200;
+    position: relative;
+    margin-top:50px;
+    left: 20%;
+    max-width: 40%;
+    max-height: 40%;
+    
+    
+  }
+  .img{
+    width: 40%;
+    border-radius: 10px;
+
+  }
+  .connected{
+      display: flex;
+      justify-content: center;
+      margin-top: 37px;
+      
+      h2{
+        font-size: 36px;
+        font-family: sans-serif;
+
+      }
+  }
+  .logo img{
+    width: 34%;
+    position: relative;
+    margin-left: 32%;
+    margin-top: -33px;
+
+  }
+  .icon img {
+    width: 24px; 
+    margin: 0 16px;
+    position: relative;
+    left: 144px;
+    margin-top: -39px;
+
+  }
+
+
+  
+
+
+
+ 

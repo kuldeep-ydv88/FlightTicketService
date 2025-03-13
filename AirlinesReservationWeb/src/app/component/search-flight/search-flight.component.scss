@@ -1,0 +1,33 @@
+
+.Search-card{
+    position: relative;
+    left: 82px;
+    width: 90%;
+    top: 100px;
+
+}
+
+.mat-mdc-radio-button ~ .mat-mdc-radio-button {
+    margin-left: 16px;
+  }
+
+  .search-box{
+    display: flex;
+    gap: 10px;
+    margin-top:10px;
+    left: 10px;
+    
+
+  }
+  .main{
+    position: relative;
+    margin-left: 32px;
+    margin-top: 19px;
+   
+  }
+
+  .search-flight{
+   background-image: url('../../../assets/father-656734_1920.jpg');
+    height: 91%;
+    background-size: cover;
+  }
